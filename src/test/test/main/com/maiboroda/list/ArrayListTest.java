@@ -69,6 +69,7 @@ public class ArrayListTest {
 
         list.clear();
         assertEquals(list.size(), 0);
+
     }
 
     @Test
