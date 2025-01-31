@@ -17,8 +17,6 @@ public class ArrayList implements List {
             list.add("A", 0);
             list.add("B", 1);
             list.add("C", 2);
-
-
         }
 
         @Override
@@ -48,7 +46,6 @@ public class ArrayList implements List {
             list.add("D");
             list.set(0, Integer.parseInt("E"));
             System.out.println(list);
-
             return null;
         }
 
@@ -59,11 +56,9 @@ public class ArrayList implements List {
             list.add("Cherry");
             System.out.println("ArrayList: " + list);
             System.out.println(list.size());
-
             list.clear();
             System.out.println("ArrayList: " + list);
             System.out.println(list.size());
-
         }
 
         @Override
@@ -72,8 +67,6 @@ public class ArrayList implements List {
             list.add("Apple");
             list.add("Cherry");
             System.out.println(list.size());
-
-
             return 0;
         }
 

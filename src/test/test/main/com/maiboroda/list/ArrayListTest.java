@@ -1,12 +1,8 @@
 package test.test.main.com.maiboroda.list;
 
 import org.junit.Test;
-
 import java.util.ArrayList;
-import java.util.ArrayList;
-
 import static org.junit.Assert.assertEquals;
-
 
 public class ArrayListTest {
     ArrayList list = new ArrayList();
