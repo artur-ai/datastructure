@@ -1,4 +1,4 @@
-package main.com.maiboroda.stack;
+package com.maiboroda.stack;
 
 public class ArrayStack implements Stack {
     private Object[] array;
@@ -9,7 +9,6 @@ public class ArrayStack implements Stack {
     }
     public ArrayStack(int initialCapacity) {
         array = new Object[initialCapacity];
-
     }
 
 
@@ -38,7 +37,7 @@ public class ArrayStack implements Stack {
 
     @Override
     public Object peek() {
-       return array[size -1];
+        return array[size -1];
     }
 
     @Override

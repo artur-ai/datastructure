@@ -1,9 +1,11 @@
-package main.com.maiboroda.stack;
+package com.maiboroda.stack;
 
+import com.maiboroda.stack.ArrayStack;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 public class ArrayStackTest {
+
     @Test
     public void testPushAndPop() {
         ArrayStack stack = new ArrayStack();
@@ -57,10 +59,5 @@ public class ArrayStackTest {
     public void testWillIlleagalStateExeptionWhenOnEmptyStack() {
         ArrayStack stack = new ArrayStack();
         assertThrows(IllegalStateException.class, stack::pop);
-
-
     }
-
-
-
 }
