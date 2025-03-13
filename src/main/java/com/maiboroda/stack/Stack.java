@@ -1,4 +1,4 @@
-package main.com.maiboroda.stack;
+package com.maiboroda.stack;
 
 public interface Stack {
     void push(Object value);
