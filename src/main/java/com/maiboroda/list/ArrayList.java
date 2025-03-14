@@ -9,6 +9,11 @@ public class ArrayList implements List {
         array = new Object[INITIAL_SIZE];
     }
 
+    public ArrayList(int a){
+        array = new Object[a];
+
+    }
+
     @Override
     public void add(Object value) {
         if (size == array.length) {
@@ -29,12 +34,14 @@ public class ArrayList implements List {
             for (int i = 0; i < size; i++) {
                 newArray[i] = array[i];
             }
-            for (int i = size; i > index; i--) {
-                array[i] = array[i - 1];
-            }
-            array[index] = value;
-            size++;
+            array = newArray;
         }
+        for (int i = size; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = value;
+        size++;
+
     }
 
     @Override
@@ -47,7 +54,9 @@ public class ArrayList implements List {
             array[i] = array[i + 1];
         }
         array[size - 1] = null;
+        size--;
         return removed;
+
     }
 
     @Override

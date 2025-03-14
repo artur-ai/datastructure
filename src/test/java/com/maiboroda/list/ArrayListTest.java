@@ -2,11 +2,18 @@ package com.maiboroda.list;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class ArrayListTest {
+    @Test
+    public void addSizeOfArray(){
+        ArrayList list = new ArrayList(120);
+        list.add("A");
+        list.add("B");
+        list.add("C");
+
+    }
+
 
 
     @Test
@@ -16,27 +23,27 @@ public class ArrayListTest {
         list.add("B");
         list.add("C");
 
-        assertEquals(list.size(), 3);
+        assertEquals(3, list.size());
     }
 
     @Test
     public void addValueByIndex() {
-        ArrayList list = new ArrayList();
-        list.add(0, "A");
-        list.add(1, "B");
-        list.add(2, "C");
+        ArrayList list = new ArrayList(20);
+        list.add( "A", 0);
+        list.add("B", 1);
+        list.add( "C", 2);
 
         assertEquals("A", list.get(0));
         assertEquals("B", list.get(1));
         assertEquals("C", list.get(2));
 
-        list.add(1, "N");
+        list.add( "N", 1);
         assertEquals("A", list.get(0));
         assertEquals("N", list.get(1));
         assertEquals("B", list.get(2));
         assertEquals("C", list.get(3));
 
-        list.add(0, "Q");
+        list.add( "Q", 0);
         assertEquals("Q", list.get(0));
         assertEquals("A", list.get(1));
         assertEquals("N", list.get(2));
@@ -55,7 +62,7 @@ public class ArrayListTest {
         list.add("C");
 
         assertEquals(list.remove(0), "A");
-        assertEquals(list.size(), 2);
+        assertEquals(2, list.size());
 
         list.add("D");
         list.add("E");
@@ -78,9 +85,9 @@ public class ArrayListTest {
         list.add("C++");
         list.add("Python");
         list.add("C#");
-        list.set(1, "Java Script");
+        list.set("Java Script", 1);
 
-        assertEquals(list.set(1, "C++"), "Java Script");
+        assertEquals(list.set("C++", 1), "Java Script");
         assertEquals(list.size(), 4);
 
     }
