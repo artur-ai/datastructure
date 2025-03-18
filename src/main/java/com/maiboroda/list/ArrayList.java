@@ -9,18 +9,15 @@ public class ArrayList implements List {
         array = new Object[INITIAL_SIZE];
     }
 
-    public ArrayList(int a){
-        array = new Object[a];
-
+    public ArrayList(int length){
+        array = new Object[length];
     }
 
     @Override
     public void add(Object value) {
         if (size == array.length) {
             Object[] newArray = new Object[array.length * 2];
-            for (int i = 0; i < size; i++) {
-                newArray[i] = array[i];
-            }
+            System.arraycopy(array, 0, newArray, 0, size);
             array = newArray;
         }
         array[size] = value;
@@ -29,11 +26,15 @@ public class ArrayList implements List {
 
     @Override
     public void add(Object value, int index) {
+        if (index < 0){
+            throw new IndexOutOfBoundsException("Negative index!!!!");
+        }
+        if (index > size){
+            throw new IndexOutOfBoundsException("Index bigger than size!!!");
+        }
         if (size == array.length) {
             Object[] newArray = new Object[array.length * 2];
-            for (int i = 0; i < size; i++) {
-                newArray[i] = array[i];
-            }
+            System.arraycopy(array, 0, newArray, 0, size);
             array = newArray;
         }
         for (int i = size; i > index; i--) {
@@ -66,6 +67,12 @@ public class ArrayList implements List {
 
     @Override
     public Object set(Object value, int index) {
+        if (index < 0){
+            throw new IndexOutOfBoundsException("Negative index!!!!");
+        }
+        if (index > size){
+            throw new IndexOutOfBoundsException("Index bigger than size!!!");
+        }
         Object oldValue = array[index];
         array[index] = value;
         return oldValue;
