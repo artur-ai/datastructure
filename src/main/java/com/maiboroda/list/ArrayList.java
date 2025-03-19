@@ -9,44 +9,31 @@ public class ArrayList implements List {
         array = new Object[INITIAL_SIZE];
     }
 
-    public ArrayList(int length){
+    public ArrayList(int length) {
         array = new Object[length];
     }
 
     @Override
     public void add(Object value) {
-        if (size == array.length) {
-            Object[] newArray = new Object[array.length * 2];
-            System.arraycopy(array, 0, newArray, 0, size);
-            array = newArray;
-        }
+        extendArray();
         array[size] = value;
         size++;
     }
 
     @Override
     public void add(Object value, int index) {
-        if (index < 0){
-            throw new IndexOutOfBoundsException("Negative index!!!!");
-        }
-        if (index > size){
-            throw new IndexOutOfBoundsException("Index bigger than size!!!");
-        }
-        if (size == array.length) {
-            Object[] newArray = new Object[array.length * 2];
-            System.arraycopy(array, 0, newArray, 0, size);
-            array = newArray;
-        }
+        validateIndex(index);
+        extendArray();
         for (int i = size; i > index; i--) {
             array[i] = array[i - 1];
         }
         array[index] = value;
         size++;
-
     }
 
     @Override
     public Object remove(int index) {
+        validateIndex(index);
         if (size == 0) {
             throw new IllegalStateException("List is empty");
         }
@@ -57,22 +44,17 @@ public class ArrayList implements List {
         array[size - 1] = null;
         size--;
         return removed;
-
     }
 
     @Override
     public Object get(int index) {
+        validateIndex(index);
         return array[index];
     }
 
     @Override
     public Object set(Object value, int index) {
-        if (index < 0){
-            throw new IndexOutOfBoundsException("Negative index!!!!");
-        }
-        if (index > size){
-            throw new IndexOutOfBoundsException("Index bigger than size!!!");
-        }
+        validateIndex(index);
         Object oldValue = array[index];
         array[index] = value;
         return oldValue;
@@ -123,5 +105,34 @@ public class ArrayList implements List {
             }
         }
         return -1;
+    }
+
+    @Override
+    public String toString() {
+        if (size == 0) {
+            return "[]";
+        }
+        String result = "[";
+        for (int i = 0; i < size; i++) {
+            result += array[i];
+            if (i < size - 1) {
+                result += ", ";
+            }
+        }
+        return result + "]";
+    }
+
+    public void validateIndex(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index " + index + " must be between 0 to size " + size);
+        }
+    }
+
+    public void extendArray() {
+        if (size == array.length) {
+            Object[] newArray = new Object[array.length * 2];
+            System.arraycopy(array, 0, newArray, 0, size);
+            array = newArray;
+        }
     }
 }

@@ -4,32 +4,52 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-
 public class ArrayListTest {
 
     @Test
-    public void addNegativeIndex(){
+    public void shouldSendExcrptionWhenUseNegativeIndex() {
         ArrayList list = new ArrayList();
-       list.add("A", -2);
-//       assertThrows(IndexOutOfBoundsException.class, list::add);
-
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add("A", -1));
     }
 
     @Test
-    public void addValueBiggerThanSize(){
+    public void addValueBiggerThanSize() {
         ArrayList list = new ArrayList();
-        list.add("B", 10000);
-
+        assertThrows(IndexOutOfBoundsException.class, () -> list.add("A", 10000));
     }
+
+    @Test
+    public void removeValueWithNegativeAndBigIndex() {
+        ArrayList list = new ArrayList();
+        list.add("A");
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.remove(1000));
+    }
+
+    @Test
+    public void setValueWithNegativeAndBigIndex() {
+        ArrayList list = new ArrayList();
+        list.add("A");
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set("B", -1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.set("C", 1000));
+    }
+
+    @Test
+    public void getValueWithNegativeAndBigIndex() {
+        ArrayList list = new ArrayList();
+        list.add("A");
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(-1));
+        assertThrows(IndexOutOfBoundsException.class, () -> list.get(1000));
+    }
+
     @Test
     public void addSizeOfArray() {
         ArrayList list = new ArrayList(120);
         list.add("A");
         list.add("B");
         list.add("C");
-        
-        assertEquals(3, list.size());
 
+        assertEquals(3, list.size());
     }
 
     @Test
@@ -66,8 +86,6 @@ public class ArrayListTest {
         assertEquals("B", list.get(3));
         assertEquals("C", list.get(4));
         assertEquals(5, list.size());
-
-
     }
 
     @Test
@@ -104,7 +122,7 @@ public class ArrayListTest {
         list.set("Java Script", 1);
 
         assertEquals("Java Script", list.set("C++", 1));
-        assertEquals(4,list.size());
+        assertEquals(4, list.size());
 
     }
 
@@ -117,7 +135,7 @@ public class ArrayListTest {
         assertEquals(3, list.size());
 
         list.clear();
-        assertEquals(0,list.size());
+        assertEquals(0, list.size());
 
     }
 
@@ -171,4 +189,14 @@ public class ArrayListTest {
         assertEquals(0, list.lastIndexOf("Banana"));
     }
 
+    @Test
+    public void addObject_returnString() {
+        ArrayList list = new ArrayList();
+        assertEquals("[]", list.toString());
+        list.add("A");
+        assertEquals("[A]", list.toString());
+
+        list.add("B");
+        assertEquals("[A, B]", list.toString());
+    }
 }
