@@ -1,11 +1,11 @@
 package com.maiboroda.stack;
 
-public interface Stack {
-    void push(Object value);
-    Object pop();
+public interface Stack<E> {
+    void push(E value);
+    E pop();
     boolean isEmpty();
-    Object peek();
-    boolean contains(Object value);
+    E peek();
+    boolean contains(E value);
     int size();
     void clear();
 }

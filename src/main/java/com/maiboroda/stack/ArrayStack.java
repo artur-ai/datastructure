@@ -1,30 +1,30 @@
 package com.maiboroda.stack;
 
-public class ArrayStack implements Stack {
-    private Object[] array;
+public class ArrayStack<E> implements Stack<E> {
+    private E[] array;
     private int size;
 
     public ArrayStack() {
-        array = new Object[10];
+        array = (E[]) new Object[10];
     }
     public ArrayStack(int initialCapacity) {
-        array = new Object[initialCapacity];
+        array = (E[]) new Object[initialCapacity];
     }
 
 
     @Override
-    public void push(Object value) {
+    public void push(E value) {
         ensureCapacity();
         array[size] = value;
         size++;
     }
 
     @Override
-    public Object pop() {
+    public E pop() {
         if(size == 0){
             throw new IllegalStateException("Stack is empty");
         }
-       Object result = array[size-1];
+       E result = array[size-1];
         size--;
         return result;
     }
@@ -36,14 +36,14 @@ public class ArrayStack implements Stack {
     }
 
     @Override
-    public Object peek() {
+    public E peek() {
         return array[size -1];
     }
 
     @Override
-    public boolean contains(Object value) {
+    public boolean contains(E value) {
        for(int i = 0; i < size; i++){
-           Object valueInStack = array[i];
+           E valueInStack = array[i];
            if(value.equals(valueInStack)){
                return true;
            }
@@ -63,7 +63,7 @@ public class ArrayStack implements Stack {
 
     private void ensureCapacity() {
         if(size == array.length) {
-            Object[] newArray = new Object[array.length * 2];
+            E[] newArray = (E[])new Object[array.length * 2];
             for (int i = 0; i < size; i++) {
                 newArray[i] = array[i];
             }

@@ -1,12 +1,12 @@
 package com.maiboroda.queue;
 
-public interface Queue {
-    void engueue(Object value);
-    Object dequeue();
-    Object peek();
+public interface Queue<E> {
+    void engueue(E value);
+    E dequeue();
+    E peek();
     int size();
     boolean isEmpty();
-    boolean contains(Object value);
+    boolean contains(E value);
     void clear();
 
     String toString();

@@ -1,25 +1,25 @@
 package com.maiboroda.queue;
 
-public class ArrayQueue implements Queue{
-    private Object array[];
+public class ArrayQueue<E> implements Queue<E>{
+    private E array[];
     private int size;
 
     public ArrayQueue(){
-        array = new Object[10];
+        array = (E[])new Object[10];
     }
 
     @Override
-    public void engueue(Object value) {
+    public void engueue(E value) {
         array[size] = value;
         size++;
     }
 
     @Override
-    public Object dequeue() {
+    public E dequeue() {
         if(size==0){
             throw new IllegalStateException("Queue is empty");
         }
-        Object value = array[0];
+        E value = array[0];
         for(int i = 0; i < size; i++){
             array[i] = array[i+1];
         }
@@ -28,7 +28,7 @@ public class ArrayQueue implements Queue{
     }
 
     @Override
-    public Object peek() {
+    public E peek() {
         return array[0];
     }
 
@@ -43,9 +43,9 @@ public class ArrayQueue implements Queue{
     }
 
     @Override
-    public boolean contains(Object value) {
+    public boolean contains(E value) {
         for(int i = 0; i < size; i++){
-            Object valueInEqueu = array[i];
+            E valueInEqueu = array[i];
             if(value.equals(valueInEqueu)) {
                 return true;
             }
