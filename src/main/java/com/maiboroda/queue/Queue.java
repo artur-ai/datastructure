@@ -9,5 +9,6 @@ public interface Queue<E> {
     boolean contains(E value);
     void clear();
 
+
     String toString();
 }

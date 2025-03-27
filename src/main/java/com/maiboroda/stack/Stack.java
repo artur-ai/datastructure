@@ -7,5 +7,6 @@ public interface Stack<E> {
     E peek();
     boolean contains(E value);
     int size();
+
     void clear();
 }

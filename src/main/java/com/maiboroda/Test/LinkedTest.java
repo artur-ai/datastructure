@@ -12,7 +12,6 @@ public class LinkedTest {
         System.out.println(getValueByIndex(0, head));
         System.out.println(getValueByIndex(1, head));
         System.out.println(getValueByIndex(2, head));
-
     }
 
     public static Object getValueByIndex(int index, Node head) {

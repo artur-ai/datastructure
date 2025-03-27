@@ -55,6 +55,7 @@ public class ArrayQueue<E> implements Queue<E>{
 
     @Override
     public void clear() {
+
         size=0;
     }
 

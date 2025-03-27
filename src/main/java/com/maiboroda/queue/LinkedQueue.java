@@ -4,6 +4,7 @@ public class LinkedQueue implements Queue {
     Node head;
     int size;
 
+
     @Override
     public void engueue(Object value) {
         Node newNode = new Node(value);
