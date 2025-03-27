@@ -1,27 +1,27 @@
 package com.maiboroda.list;
 
-public class ArrayList implements List {
-    private Object[] array;
+public class ArrayList<E> implements List<E> {
+    private E[] array;
     private int size;
     private static final int INITIAL_SIZE = 10;
 
     public ArrayList() {
-        array = new Object[INITIAL_SIZE];
+        array = (E[])new Object[INITIAL_SIZE];
     }
 
     public ArrayList(int length) {
-        array = new Object[length];
+        array = (E[])new Object[length];
     }
 
     @Override
-    public void add(Object value) {
+    public void add(E value) {
         extendArray();
         array[size] = value;
         size++;
     }
 
     @Override
-    public void add(Object value, int index) {
+    public void add(E value, int index) {
         validateIndex(index);
         extendArray();
         for (int i = size; i > index; i--) {
@@ -32,12 +32,12 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Object remove(int index) {
+    public E remove(int index) {
         validateIndex(index);
         if (size == 0) {
             throw new IllegalStateException("List is empty");
         }
-        Object removed = array[index];
+        E removed = array[index];
         for (int i = index; i < size - 1; i++) {
             array[i] = array[i + 1];
         }
@@ -47,15 +47,15 @@ public class ArrayList implements List {
     }
 
     @Override
-    public Object get(int index) {
+    public E get(int index) {
         validateIndex(index);
         return array[index];
     }
 
     @Override
-    public Object set(Object value, int index) {
+    public E set(E value, int index) {
         validateIndex(index);
-        Object oldValue = array[index];
+        E oldValue = array[index];
         array[index] = value;
         return oldValue;
     }
@@ -76,9 +76,9 @@ public class ArrayList implements List {
     }
 
     @Override
-    public boolean contains(Object value) {
+    public boolean contains(E value) {
         for (int i = 0; i < size; i++) {
-            Object valueInList = array[i];
+            E valueInList = array[i];
             if (value.equals(valueInList)) {
                 return true;
             }
@@ -87,7 +87,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public int indexOf(Object value) {
+    public int indexOf(E value) {
         for (int i = 0; i < size; i++) {
             if (array[i] == value) {
                 return i;
@@ -98,7 +98,7 @@ public class ArrayList implements List {
 
 
     @Override
-    public int lastIndexOf(Object value) {
+    public int lastIndexOf(E value) {
         for (int i = array.length - 1; i >= 0; i--) {
             if (array[i] == value) {
                 return i;
@@ -130,7 +130,7 @@ public class ArrayList implements List {
 
     public void extendArray() {
         if (size == array.length) {
-            Object[] newArray = new Object[array.length * 2];
+            E[] newArray = (E[])new Object[array.length * 2];
             System.arraycopy(array, 0, newArray, 0, size);
             array = newArray;
         }
