@@ -1,9 +1,10 @@
 package com.maiboroda.stack;
 
-import com.maiboroda.stack.ArrayStack;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+
 public class ArrayStackTest {
 
     @Test

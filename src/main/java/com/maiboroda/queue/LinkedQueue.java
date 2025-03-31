@@ -1,17 +1,16 @@
 package com.maiboroda.queue;
 
-public class LinkedQueue implements Queue {
-    Node head;
+public class LinkedQueue<E> implements Queue<E> {
+    Node<E> head;
     int size;
 
-
     @Override
-    public void engueue(Object value) {
-        Node newNode = new Node(value);
+    public void engueue(E value) {
+        Node<E> newNode = new Node(value);
         if (isEmpty()) {
             head = newNode;
         }else{
-            Node current = head;
+            Node<E> current = head;
             while(current.next != null){
                 current = current.next;
             }
@@ -21,18 +20,18 @@ public class LinkedQueue implements Queue {
     }
 
     @Override
-    public Object dequeue() {
+    public E dequeue() {
         if(isEmpty()){
             throw new IllegalStateException("Queue is empty");
         }
-        Object result = head.value;
+        E result = head.value;
         head = head.next;
         size--;
         return result;
     }
 
     @Override
-    public Object peek() {
+    public E peek() {
         if(isEmpty()){
             throw new IllegalStateException("Queue is empty");
         }
@@ -50,8 +49,8 @@ public class LinkedQueue implements Queue {
     }
 
     @Override
-    public boolean contains(Object value) {
-        Node current = head;
+    public boolean contains(E value) {
+        Node<E> current = head;
         while(current != null){
             if(current.value.equals(value)){
                 return true;
@@ -70,7 +69,7 @@ public class LinkedQueue implements Queue {
         if(isEmpty()){
             return "[]";
         }
-        Node current = head;
+        Node<E> current = head;
         String result = "[";
         while(current != null){
             result += current.value;
@@ -82,11 +81,11 @@ public class LinkedQueue implements Queue {
         return result + "]";
     }
 
-    public static class Node {
-        Object value;
-        Node next;
+    public static class Node<E> {
+        E value;
+        Node<E> next;
 
-        public Node(Object value) {
+        public Node(E value) {
             this.value = value;
         }
     }

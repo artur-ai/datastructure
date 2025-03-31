@@ -16,6 +16,7 @@ public interface List<E> {
     E remove(int index);
 
     // [A, B, C] size = 3
+
 // we can get value by index between [0, size - 1]
 // otherwise throw new IndexOutOfBoundsException
     E get(int index);

@@ -6,11 +6,11 @@ public class ArrayList<E> implements List<E> {
     private static final int INITIAL_SIZE = 10;
 
     public ArrayList() {
-        array = (E[])new Object[INITIAL_SIZE];
+        array = (E[]) new Object[INITIAL_SIZE];
     }
 
     public ArrayList(int length) {
-        array = (E[])new Object[length];
+        array = (E[]) new Object[length];
     }
 
     @Override
@@ -130,7 +130,7 @@ public class ArrayList<E> implements List<E> {
 
     public void extendArray() {
         if (size == array.length) {
-            E[] newArray = (E[])new Object[array.length * 2];
+            E[] newArray = (E[]) new Object[array.length * 2];
             System.arraycopy(array, 0, newArray, 0, size);
             array = newArray;
         }
