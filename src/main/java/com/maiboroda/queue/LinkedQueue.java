@@ -55,12 +55,14 @@ public class LinkedQueue<E> implements Queue<E> {
             if(current.value.equals(value)){
                 return true;
             }
+            current = current.next;
         }
         return false;
     }
 
     @Override
     public void clear() {
+        head = null;
         size = 0;
     }
 
