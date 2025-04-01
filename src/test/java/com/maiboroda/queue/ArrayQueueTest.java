@@ -1,6 +1,6 @@
 package com.maiboroda.queue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ArrayQueueTest extends QueueTest {
     @Override
@@ -10,7 +10,7 @@ public class ArrayQueueTest extends QueueTest {
 
     @Test
     public void testAllArrayQueue(){
-        TestEngueueObject();
+        testEngueueObject();
         testDequeueObject();
         testPeekObject();
         testContainsOfCollection();
