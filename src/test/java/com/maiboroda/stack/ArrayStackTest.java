@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ArrayStackTest {
-
     @Test
     public void testPushAndPop() {
         ArrayStack stack = new ArrayStack();
@@ -61,5 +60,16 @@ public class ArrayStackTest {
     public void testWillIlleagalStateExeptionWhenOnEmptyStack() {
         ArrayStack stack = new ArrayStack();
         assertThrows(IllegalStateException.class, stack::pop);
+    }
+
+    @Test
+    public void addObject_returnString() {
+        ArrayStack stack = new ArrayStack();
+        assertEquals("[]", stack.toString());
+        stack.push("A");
+        assertEquals("[A]", stack.toString());
+
+        stack.push("B");
+        assertEquals("[A, B]", stack.toString());
     }
 }

@@ -111,6 +111,7 @@ public class ArrayListTest {
         list.add("Java");
         list.add("C++");
         list.add("Python");
+
         assertEquals("Java", list.get(0));
     }
 

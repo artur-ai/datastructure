@@ -88,6 +88,7 @@ public class LinkedQueue<E> implements Queue<E> {
         E value;
         Node<E> next;
 
+
         public Node(E value) {
             this.value = value;
         }
