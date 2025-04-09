@@ -73,5 +73,5 @@ public class ArrayQueue<E> implements Queue<E>{
         sb.append("]");
         return sb.toString();
     }
-    
+
 }

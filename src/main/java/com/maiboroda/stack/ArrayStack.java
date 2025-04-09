@@ -1,5 +1,6 @@
 package com.maiboroda.stack;
 public class ArrayStack<E> implements Stack<E> {
+
     private E[] array;
     private int size;
 

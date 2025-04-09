@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ArrayStackTest {
+
     @Test
     public void testPushAndPop() {
         ArrayStack stack = new ArrayStack();
