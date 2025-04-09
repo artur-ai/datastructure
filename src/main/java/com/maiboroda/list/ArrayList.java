@@ -112,14 +112,15 @@ public class ArrayList<E> implements List<E> {
         if (size == 0) {
             return "[]";
         }
-        String result = "[";
+        StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < size; i++) {
-            result += array[i];
+            sb.append(array[i]);
             if (i < size - 1) {
-                result += ", ";
+                sb.append(", ");
             }
         }
-        return result + "]";
+        sb.append("]");
+        return sb.toString();
     }
 
     public void validateIndex(int index) {

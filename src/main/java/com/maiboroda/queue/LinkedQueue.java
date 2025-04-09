@@ -71,16 +71,17 @@ public class LinkedQueue<E> implements Queue<E> {
         if(isEmpty()){
             return "[]";
         }
+        StringBuilder sb = new StringBuilder("[");
         Node<E> current = head;
-        String result = "[";
         while(current != null){
-            result += current.value;
+            sb.append(current.value);
             current = current.next;
             if(current != null){
-                result += ", ";
+               sb.append(", ");
             }
         }
-        return result + "]";
+        sb.append("]");
+        return sb.toString();
     }
 
     public static class Node<E> {
