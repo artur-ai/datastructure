@@ -99,9 +99,9 @@ public class ArrayList<E> implements List<E> {
 
     @Override
     public int lastIndexOf(E value) {
-        for (int i = array.length - 1; i >= 0; i--) {
-            if (array[i] == value) {
-                return i;
+        for (int i = size() - 1; i >= 0; i--) {
+            if (array[i].equals(value)) {
+                return (size() - 1) - i;
             }
         }
         return -1;
