@@ -1,18 +1,11 @@
 package com.maiboroda.list;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class LinkedList<E> implements List<E> {
-    private class Node<E> {
-        E value;
-        Node<E> next;
-
-        public Node(E value) {
-            this.value = value;
-        }
-    }
-
-    int size;
+public class LinkedList<E> implements List<E>, Iterable<E> {
+    private int size;
     private Node<E> last;
     private Node<E> first;
 
@@ -89,7 +82,6 @@ public class LinkedList<E> implements List<E> {
     public void clear() {
         first = last = null;
         size = 0;
-
     }
 
     @Override
@@ -158,6 +150,16 @@ public class LinkedList<E> implements List<E> {
         return stringBuilder.toString();
     }
 
+    private static class Node<E> {
+        E value;
+        Node<E> next;
+
+
+        public Node(E value) {
+            this.value = value;
+        }
+    }
+
     private Node<E> getNodeByIndex(int index) {
         Node<E> current = first;
         for (int i = 0; i < index; i++) {
@@ -166,5 +168,26 @@ public class LinkedList<E> implements List<E> {
         return current;
     }
 
+    @Override
+    public Iterator<E> iterator() {
+        return new LinkedListIterator();
+    }
+
+    private class LinkedListIterator implements Iterator<E> {
+        private Node<E> current = first;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) throw new NoSuchElementException();
+            E value = current.value;
+            current = current.next;
+            return value;
+        }
+    }
 }
 
