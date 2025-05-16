@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class LinkedListTest<E> extends ListTest<E> {
+public class LinkedListTest<E> extends AbstractListTest<E> {
 
     @Override
     protected List<String> creatList() {
