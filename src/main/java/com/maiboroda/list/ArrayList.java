@@ -1,6 +1,9 @@
 package com.maiboroda.list;
 
-public class ArrayList<E> implements List<E> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class ArrayList<E> implements List<E>, Iterable<E> {
     private E[] array;
     private int size;
     private static final int INITIAL_SIZE = 10;
@@ -136,4 +139,32 @@ public class ArrayList<E> implements List<E> {
             array = newArray;
         }
     }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new ArrayListIterator<>(this);
+    }
+
+    private static class ArrayListIterator<E> implements Iterator<E> {
+        private int currentIndex = 0;
+        private final ArrayList<E> list;
+
+        public ArrayListIterator(ArrayList<E> list) {
+            this.list = list;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < list.size;
+        }
+
+        @Override
+        public E next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return list.array[currentIndex++];
+        }
+    }
+
 }
