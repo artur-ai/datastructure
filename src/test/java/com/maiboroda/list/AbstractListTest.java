@@ -2,17 +2,20 @@ package com.maiboroda.list;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public abstract class ListTest<E> {
-    protected abstract List<String> creatList();
+public abstract class AbstractListTest {
+    private final List<String> list = getList();
+
+    abstract List<String> getList();
 
     @Test
-    void testAddElemntToList() {
-        List<String> list = creatList();
+    void testAddElementToList() {
         list.add("1");
         list.add("2");
         list.add("3");
@@ -29,7 +32,6 @@ public abstract class ListTest<E> {
 
     @Test
     void testAddByIndexElementsToLList() {
-        List<String> list = creatList();
         list.add("A", 0);
         list.add("B", 1);
         list.add("C", 2);
@@ -53,8 +55,7 @@ public abstract class ListTest<E> {
     }
 
     @Test
-    void testRemoveElmentsFromLList() {
-        List<String> list = creatList();
+    void testRemoveElementsFromLList() {
         assertTrue(list.isEmpty());
         assertEquals(0, list.size());
 
@@ -79,7 +80,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void testGetElementsFromList() {
-        List<String> list = creatList();
         list.add("A", 0);
         list.add("B", 1);
         list.add("C", 2);
@@ -95,7 +95,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void testSetValueInlist() {
-        List<String> list = creatList();
         list.add("A", 0);
         list.add("B", 1);
         list.add("C", 2);
@@ -112,7 +111,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void testClearSizeAndIsEmptyInList() {
-        List<String> list = creatList();
         assertTrue(list.isEmpty());
         assertEquals(0, list.size());
 
@@ -131,8 +129,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void testContainsOfValueInList() {
-        List<String> list = creatList();
-
         assertFalse(list.contains("1"));
 
         list.add("1");
@@ -150,7 +146,7 @@ public abstract class ListTest<E> {
 
     @Test
     public void testIndexOfValueInList() {
-        List<String> list = creatList();
+
         list.add("1");
         list.add("2");
         list.add("3");
@@ -162,7 +158,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void testLastIndexOfValueInList() {
-        List<String> list = creatList();
         list.add("A", 0);
         list.add("C", 1);
         list.add("B", 2);
@@ -175,7 +170,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void addObject_returnStringInList() {
-        List<String> list = creatList();
 
         assertEquals("[]", list.toString());
         list.add("A");
@@ -188,20 +182,17 @@ public abstract class ListTest<E> {
     }
 
     @Test
-    public void shouldSendExcrptionWhenUseNegativeIndex() {
-        ArrayList<String> list = new ArrayList();
+    public void shouldSendExceptionWhenUseNegativeIndex() {
         assertThrows(IndexOutOfBoundsException.class, () -> list.add("A", -1));
     }
 
     @Test
     public void addValueBiggerThanSize() {
-        ArrayList<String> list = new ArrayList();
         assertThrows(IndexOutOfBoundsException.class, () -> list.add("A", 10000));
     }
 
     @Test
     public void removeValueWithNegativeAndBigIndex() {
-        ArrayList<String> list = new ArrayList();
         list.add("A");
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(-1));
         assertThrows(IndexOutOfBoundsException.class, () -> list.remove(1000));
@@ -209,7 +200,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void setValueWithNegativeAndBigIndex() {
-        ArrayList<String> list = new ArrayList();
         list.add("A");
         assertThrows(IndexOutOfBoundsException.class, () -> list.set("B", -1));
         assertThrows(IndexOutOfBoundsException.class, () -> list.set("C", 1000));
@@ -217,7 +207,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void getValueWithNegativeAndBigIndex() {
-        ArrayList<String> list = new ArrayList();
         list.add("A");
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(-1));
         assertThrows(IndexOutOfBoundsException.class, () -> list.get(1000));
@@ -225,7 +214,6 @@ public abstract class ListTest<E> {
 
     @Test
     public void addSizeOfArray() {
-        ArrayList<String> list = new ArrayList(120);
         list.add("A");
         list.add("B");
         list.add("C");
@@ -233,5 +221,24 @@ public abstract class ListTest<E> {
         assertEquals(3, list.size());
     }
 
+    @Test
+    void testIteratorInTheList() {
 
+        list.add("Java");
+        list.add("C++");
+        list.add("C#");
+
+        Iterator<String> iterator = list.iterator();
+
+        assertTrue(iterator.hasNext());
+        assertEquals("Java", iterator.next());
+
+        assertTrue(iterator.hasNext());
+        assertEquals("C++", iterator.next());
+
+        assertTrue(iterator.hasNext());
+        assertEquals("C#", iterator.next());
+
+        assertFalse(iterator.hasNext());
+    }
 }
