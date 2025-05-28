@@ -1,6 +1,6 @@
 package com.maiboroda.list;
 
-public interface List<E> {
+public interface List<E> extends Iterable<E> {
     // add value to the end of the list
     void add(E value);
 

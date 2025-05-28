@@ -2,7 +2,7 @@ package com.maiboroda.list;
 
 import org.junit.jupiter.api.Test;
 
-public class ArrayListTest<E> extends ListTest<E> {
+public class ArrayListTest<E> extends AbstractListTest<E> {
 
     @Test
     void test() {

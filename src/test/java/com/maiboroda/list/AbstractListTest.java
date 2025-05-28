@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public abstract class ListTest<E> {
+public abstract class AbstractListTest<E> {
     protected abstract List<String> creatList();
 
     @Test

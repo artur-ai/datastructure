@@ -2,10 +2,10 @@ package com.maiboroda.queue;
 
 import org.junit.jupiter.api.Test;
 
-public class ArrayQueueTest extends QueueTest {
+public class ArrayQueueTest<E> extends AbstractQueueTest<E> {
     @Override
-    protected Queue creatQueue(){
-        return new ArrayQueue();
+    protected Queue<E> creatQueue(){
+        return new ArrayQueue<E>();
     }
 
     @Test

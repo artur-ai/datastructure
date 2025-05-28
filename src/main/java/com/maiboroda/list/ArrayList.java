@@ -1,6 +1,8 @@
 package com.maiboroda.list;
 
-public class ArrayList<E> implements List<E> {
+import java.util.Iterator;
+
+public class ArrayList<E> implements List<E>, Iterable<E> {
     private E[] array;
     private int size;
     private static final int INITIAL_SIZE = 10;
@@ -135,5 +137,10 @@ public class ArrayList<E> implements List<E> {
             System.arraycopy(array, 0, newArray, 0, size);
             array = newArray;
         }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
     }
 }

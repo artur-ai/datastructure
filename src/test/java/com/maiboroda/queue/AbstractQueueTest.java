@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public abstract class QueueTest {
-    protected abstract Queue creatQueue();
+public abstract class AbstractQueueTest<E> {
+    protected abstract Queue<E> creatQueue();
 
     @Test
     public void testEngueueObject(){
