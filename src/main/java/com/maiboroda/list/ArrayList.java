@@ -166,5 +166,4 @@ public class ArrayList<E> implements List<E>, Iterable<E> {
             return list.array[currentIndex++];
         }
     }
-
 }
